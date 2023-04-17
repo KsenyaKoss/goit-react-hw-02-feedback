@@ -18,4 +18,5 @@ export const FeedbackOptions = ({ options, onClick }) => {
 
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func,
 };
