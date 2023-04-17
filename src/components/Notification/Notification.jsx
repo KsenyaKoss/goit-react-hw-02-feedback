@@ -1,6 +1,10 @@
-import {Styledp} from './Notification.styled'
+import { Styledp } from './Notification.styled';
+import PropTypes from 'prop-types';
 
+export const Notification = ({ message }) => {
+  return <Styledp>{message}</Styledp>;
+};
 
-export const Notification =({message}) => {
-    <Styledp>{message}</Styledp>
-}
+Notification.propTypes = {
+  message: PropTypes.string,
+};

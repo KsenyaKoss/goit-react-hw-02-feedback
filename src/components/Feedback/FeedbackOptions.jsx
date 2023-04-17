@@ -1,12 +1,21 @@
-import {Styledbutton} from './FeedbackOptions.styled'
-import {Flex} from '../../StyledComponents'
+import { Styledbutton } from './FeedbackOptions.styled';
+import { Flex } from '../../StyledComponents';
+import PropTypes from 'prop-types';
 
-export const FeedbackOptions = ({handleGood, handleNeutral, handleBad}) => {
-    return (
-        <Flex justify="center">
-        <Styledbutton type="button" onClick={handleGood}>Good</Styledbutton>
-        <Styledbutton type="button" onClick={handleNeutral}>Neutral</Styledbutton>
-        <Styledbutton type="button" onClick={handleBad}>Bad</Styledbutton>
-        </Flex>
-      )
-}
+export const FeedbackOptions = ({ options, onClick }) => {
+  return (
+    <Flex justify="center">
+      {options.map(option => (
+        <li key={option}>
+          <Styledbutton type="button" name={option} onClick={ev => onClick(ev)}>
+            {option}
+          </Styledbutton>
+        </li>
+      ))}
+    </Flex>
+  );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+};
