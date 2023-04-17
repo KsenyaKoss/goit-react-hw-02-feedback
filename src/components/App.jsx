@@ -14,7 +14,6 @@ export class App extends Component {
 
   handleClick = ev => {
     const { name } = ev.target;
-    console.log(name);
     this.setState(prevState => {
       return { [name]: prevState[name] + 1 };
     });
@@ -24,11 +23,12 @@ export class App extends Component {
     return this.state.good + this.state.neutral + this.state.bad;
   };
 
+  countPercentage = totalFeedbacks => {
+    return Math.round((Number(this.state.good) / Number(totalFeedbacks)) * 100);
+  };
+
   render() {
     const totalFeedbacks = this.countTotalFeedback();
-    const positivePercentage = Math.round(
-      (Number(this.state.good) / Number(totalFeedbacks)) * 100
-    );
 
     return (
       <>
@@ -36,7 +36,6 @@ export class App extends Component {
           <FeedbackOptions
             options={Object.keys(this.state)}
             onClick={this.handleClick}
-            countTotal={this.countTotalFeedback}
           />
         </Section>
         <Section title="Statistics">
@@ -48,7 +47,7 @@ export class App extends Component {
               neutral={this.state.neutral}
               bad={this.state.bad}
               totalFeedbacks={totalFeedbacks}
-              positivePercentage={positivePercentage}
+              positivePercentage={this.countPercentage(totalFeedbacks)}
             />
           )}
         </Section>

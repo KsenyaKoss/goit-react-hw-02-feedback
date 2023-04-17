@@ -7,7 +7,7 @@ export const FeedbackOptions = ({ options, onClick }) => {
     <Flex justify="center">
       {options.map(option => (
         <li key={option}>
-          <Styledbutton type="button" name={option} onClick={ev => onClick(ev)}>
+          <Styledbutton type="button" name={option} onClick={onClick}>
             {option}
           </Styledbutton>
         </li>
